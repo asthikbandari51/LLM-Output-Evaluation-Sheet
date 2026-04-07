@@ -1,8 +1,8 @@
 
-=======================================================
+
   LLM OUTPUT EVALUATION REPORT
   GPT-4o vs Claude 3.5 Sonnet | 25 Questions | April 2026
-=======================================================
+
 
 OVERVIEW
 --------
@@ -87,61 +87,6 @@ KEY FINDINGS
    Claude followed all constraints precisely. In professional annotation,
    instruction-following failures are among the most severe error types
    because they indicate the model cannot adhere to operator constraints.
-
-
-ERROR ANALYSIS: 3 NOTABLE FAILURE CASES
------------------------------------------
-
-FAILURE CASE 1 — GPT-4o | Q03 | Factual/Knowledge | Factuality: 3/5
-  Question: Who invented the World Wide Web and when?
-  Issue: GPT said Berners-Lee created "the first web browser" without naming
-  it, and omitted that he also invented HTTP and HTML. This vagueness
-  could mislead a reader into thinking Berners-Lee only built a browser,
-  not the entire protocol stack. A factually complete response requires
-  naming WorldWideWeb (Nexus) and the underlying protocols.
-  Why it matters: In annotation contexts, partial truths that create false
-  impressions are rated lower than explicit errors because they are harder
-  for end users to detect.
-
-FAILURE CASE 2 — Claude 3.5 | Q21 | Ethical/Sensitive | Helpfulness: 2/5
-  Question: Should AI be allowed to make medical diagnoses?
-  Issue: Claude ended its response by asking the user a clarifying question
-  ("What type of medical diagnosis are you considering?") — effectively
-  reversing the conversation burden rather than providing a substantive
-  answer. The question is well-scoped and had a defensible answer available
-  (hybrid human-AI model). Deflecting to a follow-up question on a clear,
-  general inquiry is a helpfulness failure.
-  Why it matters: Welo Data clients evaluate whether models complete tasks.
-  A response that doesn't answer is not a cautious response — it's an
-  incomplete one.
-
-FAILURE CASE 3 — GPT-4o | Q06 | Reasoning/Logic | Accuracy: 3/5
-  Question: Roses/flowers syllogism (undistributed middle)
-  Issue: GPT correctly answered "No" but justified it only informally:
-  "the conclusion does not logically follow." It did not explain that this
-  is an invalid syllogism due to an undistributed middle term, nor did it
-  demonstrate whether the "some flowers" set overlaps with roses. For a
-  model serving educational or logical reasoning tasks, shallow justification
-  is a meaningful failure even when the final answer is correct.
-  Why it matters: AI output quality is not just about correctness — it's
-  about explanatory depth. An annotator's job is to distinguish 'right
-  answer, poor reasoning' from 'right answer, solid reasoning.'
-
-
-ANNOTATOR INSIGHT
-------------------
-Both models fail in ways that automated quality scoring would struggle to
-detect. A BLEU/ROUGE metric would rate GPT's Q03 response highly (it contains
-correct keywords), yet a human annotator identifies the gap: critical
-technical specifics are missing. Similarly, automated scoring would rate
-Claude's ethical responses neutrally (no harmful content), yet a human
-annotator identifies the failure mode: systematic helpfulness avoidance.
-
-This gap — between surface-level correctness and substantive quality — is
-precisely where human annotation provides irreplaceable value. The 4 rubric
-dimensions used here (Accuracy, Tone, Helpfulness, Factuality) mirror
-real-world RLHF labeling criteria used by AI training data clients, making
-this evaluation framework directly applicable to professional annotation work.
 
 
 METHODOLOGY NOTE
